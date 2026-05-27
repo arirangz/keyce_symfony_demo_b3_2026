@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+ <h1>Accueil</h1>
+ <h2>Bienvenue {{ name }}</h2>
+{% if age >= 18 %}
+    <p>Vous êtes majeur.</p>
+{% else %}
+    <p>Vous n'êtes pas majeur.</p>
+{% endif %}
+
+<section>
+    <h2>Liste de films</h2>
+    {% for movie in movies %}
+        <article>
+            <h3>{{ movie.title }}</h3>
+            <p>Réalisé par {{ movie.director }}</p>
+        </article>
+    {% endfor %}
+</section>
+
+{% endblock %}
