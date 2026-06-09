@@ -23,7 +23,7 @@ final class PageController extends AbstractController
             'movies' => $movies,
         ]);
     }
-    #[Route('/', name: 'app_about')]
+    #[Route('/about', name: 'app_about')]
     public function about(): Response
     {
         return $this->render('page/about.html.twig');
