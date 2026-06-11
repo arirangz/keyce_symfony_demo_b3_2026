@@ -6,6 +6,18 @@ use App\Repository\DirectorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection(),
+    ],
+    normalizationContext: ['groups' => ['director:read']],
+)]
 
 #[ORM\Entity(repositoryClass: DirectorRepository::class)]
 class Director
@@ -13,12 +25,15 @@ class Director
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['director:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['director:read'])]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['director:read'])]
     private ?string $lastName = null;
 
     /**
@@ -89,5 +104,10 @@ class Director
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
     }
 }

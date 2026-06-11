@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class PageController extends AbstractController
 {
+
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
@@ -20,7 +21,7 @@ final class PageController extends AbstractController
         return $this->render('page/index.html.twig', [
             'name' => "John Doe",
             'age' => 30,
-            'movies' => $movies,
+            'moviesList' => $movies,
         ]);
     }
     #[Route('/about', name: 'app_about')]

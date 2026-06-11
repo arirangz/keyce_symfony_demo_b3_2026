@@ -6,4 +6,6 @@
     <h1>{{ movie.title }}</h1>
     <p>{{ movie.description }}</p>
     <p>Réalisé par {{ movie.director.firstName }} {{ movie.director.lastName }}</p>
+
+    <a href="{{ path('app_movies_list') }}">Retour à la liste</a>
 {% endblock %}

@@ -5,6 +5,7 @@
 {% block body %}
  <h1>Accueil</h1>
  <h2>Bienvenue {{ name }}</h2>
+
 {% if age >= 18 %}
     <p>Vous êtes majeur.</p>
 {% else %}
@@ -13,7 +14,7 @@
 
 <section>
     <h2>Liste de films</h2>
-    {% for movie in movies %}
+    {% for movie in moviesList %}
         <article>
             <h3>{{ movie.title }}</h3>
             <p>Réalisé par {{ movie.director }}</p>
